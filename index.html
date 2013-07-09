@@ -42,7 +42,9 @@
         </div>
         <script>
             // make this become spreadsheet
-            var SPREADSHEET = "https://docs.google.com/spreadsheet/pub?key=0Al0uCQDAjJijdDBoRnpOV0JDVE9kMUJRQ2daV0RSSGc&output=html";
+            var SPREADSHEET = prompt("Enter Google spreadheet published html", 
+                                    "https://docs.google.com/spreadsheet/pub?key=0Al0uCQDAjJijdDBoRnpOV0JDVE9kMUJRQ2daV0RSSGc&output=html"
+                                    );
             $(function () {
                 var googleSpreadsheet = new GoogleSpreadsheet();
                 googleSpreadsheet.url(SPREADSHEET);
