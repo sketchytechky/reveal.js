@@ -1,9 +1,8 @@
 # reveal.js [![Build Status](https://travis-ci.org/hakimel/reveal.js.png?branch=master)](https://travis-ci.org/hakimel/reveal.js)
 
-``` google spreadsheet edition - this allows you to write your presentation in Google spreadsheet!
-[Demo](http://sketchytechky.github.io/reveal.js/)
-[Data](https://docs.google.com/spreadsheet/ccc?key=0Al0uCQDAjJijdDBoRnpOV0JDVE9kMUJRQ2daV0RSSGc)
-```
+> google spreadsheet edition - this allows you to write your presentation in Google spreadsheet!
+> [Demo](http://sketchytechky.github.io/reveal.js/)
+> [Data](https://docs.google.com/spreadsheet/ccc?key=0Al0uCQDAjJijdDBoRnpOV0JDVE9kMUJRQ2daV0RSSGc)
 
 A framework for easily creating beautiful presentations using HTML. [Check out the live demo](http://lab.hakim.se/reveal-js/).
 
