@@ -47,10 +47,18 @@
                 var googleSpreadsheet = new GoogleSpreadsheet();
                 googleSpreadsheet.url(SPREADSHEET);
                 googleSpreadsheet.load(function(result) {
+                    secNode = $("<section/>");
                     $.each(result.data, function (i,e) {
-                        console.log("Adding link "+e);
-                        $(".slides").append("<section>"+e+"</section>");
+                        if (e=="$") {
+                            $(".slides").append(secNode);
+                            secNode = $("<section/>");
+                        } else {
+                            // if it starts with "<", assume html
+                            innerhtml = (e.substring(0,1)=='<') ? e : markdown.toHTML(e);
+                            secNode.append('<section>'+innerhtml+'</section>');
+                        }
                     });
+                    $(".slides").append(secNode);
                     reveal();
                 });
             })
