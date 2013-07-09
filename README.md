@@ -4,6 +4,10 @@
 > - [Demo](http://sketchytechky.github.io/reveal.js/)
 > - [Data](https://docs.google.com/spreadsheet/ccc?key=0Al0uCQDAjJijdDBoRnpOV0JDVE9kMUJRQ2daV0RSSGc)
 > 
+> To link to any spreadsheet you want:
+> - http://sketchytechky.github.io/reveal.js/#published_spreadsheet_html_url
+> Use the Google spreadsheet _File > Publish to Web_ feature to get the url
+>
 > Imported script from following repo
 > 
 > - https://github.com/mikeymckay/google-spreadsheet-javascript/
