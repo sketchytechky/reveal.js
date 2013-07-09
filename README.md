@@ -3,6 +3,12 @@
 > google spreadsheet edition - this allows you to write your presentation in Google spreadsheet!
 > - [Demo](http://sketchytechky.github.io/reveal.js/)
 > - [Data](https://docs.google.com/spreadsheet/ccc?key=0Al0uCQDAjJijdDBoRnpOV0JDVE9kMUJRQ2daV0RSSGc)
+> 
+> Imported script from following repo
+> 
+> - https://github.com/mikeymckay/google-spreadsheet-javascript/
+> - https://github.com/evilstreak/markdown-js
+> (help turn this into submodules)
 
 A framework for easily creating beautiful presentations using HTML. [Check out the live demo](http://lab.hakim.se/reveal-js/).
 

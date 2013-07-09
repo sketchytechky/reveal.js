@@ -25,6 +25,8 @@
 			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
         </script>
 
+        <script src="google-spreadsheet.js" ></script>
+        <script src="markdown.js" ></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
 
 		<!--[if lt IE 9]>
@@ -39,9 +41,18 @@
             </div>
         </div>
         <script>
+            // make this become spreadsheet
+            var SPREADSHEET = "https://docs.google.com/spreadsheet/pub?key=0Al0uCQDAjJijdDBoRnpOV0JDVE9kMUJRQ2daV0RSSGc&output=html";
             $(function () {
-                $(".slides").append("<section><h1>Hello World!</h1></section>");
-                reveal();
+                var googleSpreadsheet = new GoogleSpreadsheet();
+                googleSpreadsheet.url(SPREADSHEET);
+                googleSpreadsheet.load(function(result) {
+                    $.each(result.data, function (i,e) {
+                        console.log("Adding link "+e);
+                        $(".slides").append("<section>"+e+"</section>");
+                    });
+                    reveal();
+                });
             })
         </script>
 
