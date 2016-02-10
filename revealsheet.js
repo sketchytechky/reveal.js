@@ -16,6 +16,17 @@ function getFromSpreadsheet(spreadsheet_url) {
     });
 }
 
+/**
+ * Utility function for extracting sheet key
+ */
+function parseSheetKey (sheet_url) {
+    var match = /([\d\w]{44})/.exec(sheet_url);
+    if (match) {
+        return match[1];
+    }
+    return null;
+}
+
 function parseTableData(data) {
     var firstSheet = Object.keys(data)[0];
     var result = data[firstSheet].raw.feed.entry.map(function (row) {

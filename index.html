@@ -43,12 +43,14 @@
             </div>
         </div>
         <script>
-            // make this become spreadsheet
-            var spreadsheet_url = document.location.hash ? document.location.hash.slice(1)
-                               : prompt("Enter Google spreadheet published html",
+
+            var spreadsheet_url = parseSheetKey(document.location.hash);
+            if (!spreadsheet_url) {
+                spreadsheet_url = parseSheetKey(prompt("Enter Google spreadheet published html",
                                     "https://docs.google.com/spreadsheet/pub?key=0Al0uCQDAjJijdDBoRnpOV0JDVE9kMUJRQ2daV0RSSGc&output=html"
-                                    );
-            document.location.hash = ""; // this is used by reveal.js for cookie crumbs
+                                    ));
+            }
+            document.location.hash = "00/"+spreadsheet_url;
 
             $(function () {
                 console.log("Use sheet "+spreadsheet_url);
@@ -57,7 +59,7 @@
         </script>
 
 		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+		<script src="js/reveal.js"></script>
 
         <script>
             function reveal() {
