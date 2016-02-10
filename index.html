@@ -25,7 +25,9 @@
 			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
         </script>
 
-        <script src="google-spreadsheet.js" ></script>
+        <!-- custom import sheet here for importing from GoogleSheet-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.4.2/tabletop.js"></script>
+        <script src="revealsheet.js"></script>
         <script src="markdown.js" ></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
 
@@ -41,39 +43,23 @@
             </div>
         </div>
         <script>
-            // make this become spreadsheet
-            var SPREADSHEET = document.location.hash ? document.location.hash.slice(1) 
-                               : prompt("Enter Google spreadheet published html", 
+
+            var spreadsheet_url = parseSheetKey(document.location.hash);
+            if (!spreadsheet_url) {
+                spreadsheet_url = parseSheetKey(prompt("Enter Google spreadheet published html",
                                     "https://docs.google.com/spreadsheet/pub?key=0Al0uCQDAjJijdDBoRnpOV0JDVE9kMUJRQ2daV0RSSGc&output=html"
-                                    );
-            document.location.hash = ""; // this is used by reveal.js for cookie crumbs
+                                    ));
+            }
+            document.location.hash = "00/"+spreadsheet_url;
+
             $(function () {
-                console.log("Use sheet "+SPREADSHEET);
-                var googleSpreadsheet = new GoogleSpreadsheet();
-                googleSpreadsheet.url(SPREADSHEET);
-                googleSpreadsheet.load(function(result) {
-                    secNode = $("<section/>");
-                    $.each(result.data, function (i,e) {
-                        if (e=="$") {
-                            $(".slides").append(secNode);
-                            secNode = $("<section/>");
-                        } else {
-                            // if it starts with "<", assume html
-                            if (e.substring(0,1)=='<') {
-                                secNode.append('<section>'+e+'</section>');
-                            } else {
-                                secNode.append('<section data-markdown><script type="text/template">'+e+'<\/script></section>');
-                            }
-                        }
-                    });
-                    $(".slides").append(secNode);
-                    reveal();
-                });
+                console.log("Use sheet "+spreadsheet_url);
+                getFromSpreadsheet(spreadsheet_url);
             })
         </script>
 
 		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+		<script src="js/reveal.js"></script>
 
         <script>
             function reveal() {
