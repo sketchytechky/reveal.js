@@ -30,6 +30,7 @@
         <script src="revealsheet.js"></script>
         <script src="markdown.js" ></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
+        <script src="signup.js"></script>
 
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
@@ -44,17 +45,21 @@
         </div>
         <script>
 
-            var spreadsheet_url = parseSheetKey(document.location.hash);
-            if (!spreadsheet_url) {
-                spreadsheet_url = parseSheetKey(prompt("Enter Google spreadheet published html",
-                                    "https://docs.google.com/spreadsheet/pub?key=0Al0uCQDAjJijdDBoRnpOV0JDVE9kMUJRQ2daV0RSSGc&output=html"
-                                    ));
-            }
+            var spreadsheet_url = parseSheetKey(document.location.hash) ||
+                parseSheetKey("https://docs.google.com/spreadsheet/pub?key=0Al0uCQDAjJijdDBoRnpOV0JDVE9kMUJRQ2daV0RSSGc&output=html"
+                );
+            // if (!spreadsheet_url) {
+            //     spreadsheet_url = parseSheetKey(prompt("Enter Google spreadheet published html",
+            //                         "https://docs.google.com/spreadsheet/pub?key=0Al0uCQDAjJijdDBoRnpOV0JDVE9kMUJRQ2daV0RSSGc&output=html"
+            //                         ));
+            // }
             document.location.hash = "00/"+spreadsheet_url;
 
             $(function () {
                 console.log("Use sheet "+spreadsheet_url);
-                getFromSpreadsheet(spreadsheet_url);
+                getFromSpreadsheet(spreadsheet_url, function () {
+                    setTimeout(setupSignup, 500);
+                });
             })
         </script>
 

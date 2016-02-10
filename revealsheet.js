@@ -1,7 +1,7 @@
 /**
  * Main script for parsing the spreadsheet
  */
-function getFromSpreadsheet(spreadsheet_url) {
+function getFromSpreadsheet(spreadsheet_url, callback) {
     if (!Tabletop) {
         throw "This is dependent on tabletop.js https://github.com/jsoma/tabletop";
     }
@@ -11,6 +11,9 @@ function getFromSpreadsheet(spreadsheet_url) {
         callback: function (data) {
             var result = parseTableData(data);
             initSlideFromData(result);
+            if (callback) {
+                callback(result);
+            }
         },
         simpleSheet: false
     });
