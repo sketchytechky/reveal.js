@@ -20,7 +20,7 @@ function getFromSpreadsheet(spreadsheet_url) {
  * Utility function for extracting sheet key
  */
 function parseSheetKey (sheet_url) {
-    var match = /([\d\w]{44})/.exec(sheet_url);
+    var match = /([\d\w-]{44})/.exec(sheet_url);
     if (match) {
         return match[1];
     }
